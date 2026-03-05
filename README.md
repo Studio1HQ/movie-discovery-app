@@ -1,6 +1,15 @@
 # Movie Discovery App
 
-A Streamlit web app that lets you find films using natural language, powered by [Weaviate](https://weaviate.io) (vector database) and OpenAI.
+A Streamlit web app that lets you find films using natural language, powered by [Weaviate](https://weaviate.io) (vector database) and OpenAI. The entire project was built with **Claude Code** — Anthropic's AI coding agent — assisted by **Weaviate Agent Skills**, a set of structured skill definitions that guide the agent to produce correct, production-ready Weaviate code from the first attempt.
+
+## How It Was Built
+
+This project was developed end-to-end using **agentic coding**:
+
+- **Claude Code** (AI coding agent) wrote, ran, and debugged every script in this project — the schema, ingestion pipeline, and Streamlit app — based on natural language prompts.
+- **Weaviate Agent Skills** were loaded into Claude Code at session start. These skill files encode correct usage patterns for Weaviate operations (schema creation, vector search, RAG, Query Agent), eliminating guesswork and ensuring the agent used the right APIs from the start.
+- **TMDB API** was used to dynamically fetch movie metadata (titles, descriptions, release years, poster images) rather than hardcoding data. The ingestion script pages through TMDB's `top_rated` and `popular` endpoints to collect movies at scale.
+- **100 movies** are embedded in the Weaviate collection — each with a text vector (title) and an image vector (poster) stored as a base64 blob.
 
 ## Features
 
@@ -23,6 +32,7 @@ A Streamlit web app that lets you find films using natural language, powered by 
 | `single_prompt` | Per-movie AI explanation generated at query time |
 | `grouped_task` | One cohesive AI response across all results |
 | Query Agent | Conversational AI chat with source citations via `weaviate-agents` |
+| Agent Skills | Skill YAML files loaded into Claude Code to guide correct Weaviate API usage |
 
 ## Project Structure
 
@@ -30,7 +40,7 @@ A Streamlit web app that lets you find films using natural language, powered by 
 movie-discovery-app/
 ├── app.py              # Streamlit UI (search, chat, watchlist)
 ├── create_schema.py    # Creates the Movie collection via Weaviate REST API
-├── ingest_movies.py    # Ingests 10 sample movies with base64 poster images
+├── ingest_movies.py    # Fetches 100 movies from TMDB API and ingests with poster blobs
 ├── check_modules.py    # Lists enabled modules on the Weaviate cluster
 ├── requirements.txt    # Python dependencies
 └── .env                # API keys (not committed)
@@ -44,6 +54,7 @@ movie-discovery-app/
   - `multi2multivec-weaviate`
   - `generative-openai`
 - An [OpenAI API key](https://platform.openai.com/api-keys)
+- A [TMDB API key](https://www.themoviedb.org/settings/api) (free) — used to fetch movie metadata and posters dynamically
 
 ## Setup
 
@@ -73,6 +84,7 @@ Create a `.env` file in the project root:
 WEAVIATE_URL=your-cluster-host.weaviate.network
 WEAVIATE_API_KEY=your-weaviate-api-key
 OPENAI_API_KEY=your-openai-api-key
+TMDB_API_KEY=your-tmdb-api-key
 ```
 
 > **Note:** `WEAVIATE_URL` should be the bare hostname — no `https://` prefix.
@@ -83,15 +95,15 @@ OPENAI_API_KEY=your-openai-api-key
 python create_schema.py
 ```
 
-This creates a `Movie` collection with two named vectors (`text_vector` and `image_vector`) and enables RAG via `generative-openai`.
+Creates a `Movie` collection with two named vectors (`text_vector` and `image_vector`) and enables RAG via `generative-openai`.
 
-### 5. Ingest sample movies
+### 5. Ingest movies
 
 ```bash
 python ingest_movies.py
 ```
 
-Downloads posters from TMDB and Wikipedia, encodes them as base64 blobs, and inserts 10 classic films into the collection.
+Fetches 100 movies from the TMDB API (`top_rated` + `popular` endpoints), downloads each poster, encodes it as a base64 blob, and inserts everything into the Weaviate collection. Each object is automatically dual-vectorized server-side — title via `text2vec-weaviate`, poster via `multi2multivec-weaviate`.
 
 ### 6. Run the app
 
@@ -99,29 +111,28 @@ Downloads posters from TMDB and Wikipedia, encodes them as base64 blobs, and ins
 streamlit run app.py
 ```
 
-The app opens at `http://localhost:8501`.
+Opens at `http://localhost:8501`.
 
-## Sample Movies
+## Dataset
 
-The dataset includes 10 classic films:
+**100 movies** sourced dynamically from the TMDB API, spanning genres including drama, thriller, sci-fi, crime, and animation. Metadata per movie:
 
-- The Godfather (1972)
-- The Shawshank Redemption (1994)
-- Pulp Fiction (1994)
-- The Dark Knight (2008)
-- Inception (2010)
-- Forrest Gump (1994)
-- The Matrix (1999)
-- Interstellar (2014)
-- Fight Club (1999)
-- Schindler's List (1993)
+| Field | Source |
+|---|---|
+| Title | TMDB API |
+| Description | TMDB API (overview field) |
+| Release year | TMDB API (release_date) |
+| Poster | TMDB CDN (`image.tmdb.org/t/p/w500/`) as base64 blob |
 
 ## Tech Stack
 
 | Component | Technology |
 |---|---|
 | Vector database | Weaviate Cloud (v4 SDK) |
-| AI agents | weaviate-agents (Query Agent) |
+| AI coding agent | Claude Code (Anthropic) |
+| Agent skill guidance | Weaviate Agent Skills |
+| Movie data source | TMDB API |
+| AI agents | weaviate-agents 1.3.0 (Query Agent) |
 | Generative AI | OpenAI (via Weaviate's `generative-openai` module) |
 | Frontend | Streamlit |
 | Image handling | base64 + TMDB public CDN |

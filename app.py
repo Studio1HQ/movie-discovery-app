@@ -50,7 +50,7 @@ with st.sidebar:
     # Weaviate logo
     st.image(
         "https://weaviate.io/img/site/weaviate-logo-light.png",
-        width="stretch",
+        use_container_width=True,
     )
 
     st.divider()
