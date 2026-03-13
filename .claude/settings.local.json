@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:/Users/NEW USER/Desktop/Work/movie-discovery-app/frontend\" && npx shadcn@latest init -y 2>&1)"
+    ]
+  }
+}

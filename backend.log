@@ -1,0 +1,42 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\NEW USER\\Desktop\\Work\\movie-discovery-app']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [5216] using StatReload
+INFO:     Started server process [8632]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56127 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56194 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56194 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58500 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62181 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50217 - "GET /search?q=action&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57715 - "POST /ai/explain HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "POST /ai/plan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57536 - "GET /search?q=Action&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52782 - "GET /search?q=Christian&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64202 - "GET /search?q=self%20help&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50790 - "GET /search?q=christian&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63390 - "GET /search?q=Movies%20on%20favour%20and%20mercy&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59765 - "GET /search?q=Movies%20on%20favour%20and%20mercy&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63390 - "GET /search?q=Movies%20on%20favour%20and%20mercy&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60794 - "GET /search?q=Movies%20on%20tech&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56102 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56102 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63409 - "GET /search?q=tech&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51122 - "GET /search?q=Self%20help%20movies&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63525 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63525 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49725 - "GET /search?q=dev%20movies&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65306 - "GET /search?q=selfhelp%20movies&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50575 - "GET /search?q=Tech%20movies&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61528 - "GET /search?q=Tech%20movies&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63902 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49676 - "GET /search?q=tech&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63810 - "OPTIONS /ai/explain HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63810 - "POST /ai/explain HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63174 - "OPTIONS /ai/plan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63174 - "POST /ai/plan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61208 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56141 - "GET /search?q=A%20movie%20for%20devs&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50954 - "GET /search?q=devs&limit=3 HTTP/1.1" 200 OK

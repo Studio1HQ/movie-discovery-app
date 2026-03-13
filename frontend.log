@@ -1,0 +1,36 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\NEW USER\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\NEW USER\Desktop\Work\movie-discovery-app\frontend\package-lock.json
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.116.159.129:3000
+- Environments: .env.local
+
+✓ Starting...
+✓ Ready in 4.5s
+○ Compiling / ...
+ GET / 200 in 6.7s (compile: 6.0s, render: 624ms)
+ GET / 200 in 172ms (compile: 25ms, render: 146ms)
+ GET / 200 in 182ms (compile: 15ms, render: 166ms)
+ GET / 200 in 158ms (compile: 13ms, render: 145ms)
+✓ Compiled in 357ms
+✓ Compiled in 79ms
+✓ Compiled in 127ms
+✓ Compiled in 82ms
+✓ Compiled in 54ms
+ GET / 200 in 356ms (compile: 232ms, render: 125ms)
+✓ Compiled in 49ms
+ GET / 200 in 707ms (compile: 147ms, render: 560ms)
+✓ Compiled in 212ms
+ GET / 200 in 803ms (compile: 208ms, render: 595ms)
+ GET / 200 in 104ms (compile: 8ms, render: 97ms)
+ GET / 200 in 306ms (compile: 67ms, render: 239ms)
+ GET / 200 in 130ms (compile: 7ms, render: 122ms)
